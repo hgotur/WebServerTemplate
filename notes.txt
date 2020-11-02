@@ -1,0 +1,54 @@
+Demo Notes:
+
+1) Creating a new branch
+2) Modifying our index.html
+--move it to templates
+--test as often as possible
+--hot reload
+3) Styling
+--save images in static folder
+--create structure:
+    div
+        img
+        div
+            h5
+            p
+            a
+--new stylesheet
+--resize image height: 200, width 300, object-fit: cover
+--display = flex
+--link bootstrap
+--add bootstrap classes 
+4) Creating a new path /info/{category}
+-- create a hash map of category to members
+
+	static Map<String, List<String>> categoryToMembers = Map.of(
+			"fruits", List.of("apples", "bananas", "pears", "blueberries"),
+			"veggies", List.of("broccoli", "spinach", "eggplant")
+	);
+
+-- add attributes to model
+
+		List<String> members = categoryToMembers.getOrDefault(category, new ArrayList<>());
+		model.addAttribute("category", category);
+		model.addAttribute("members", members);
+
+-- create new html file to display vars
+
+    <html xmlns:th="http://www.thymeleaf.org">
+
+-- add single var
+
+    <h1>
+        Welcome, here are a bunch of members in the <span th:text="${category}" /> category
+    </h1>
+
+-- add array
+
+    <ul th:each="member: ${members}">
+        <li th:text="${member}" />
+    </ul>
+
+5) pull request
+
+6) check heroku
